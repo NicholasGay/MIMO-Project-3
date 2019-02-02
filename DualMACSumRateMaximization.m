@@ -26,7 +26,7 @@ end
 
 % Define Constraint Set
 power = 0;
-Constraints = zeros(M,M);
+Constraints = [];
 for k = 1:K
     power = power+trace(Q{k});
     Constraints = [Constraints, Q{k} >= 0];

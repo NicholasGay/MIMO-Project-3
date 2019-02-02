@@ -46,10 +46,13 @@ for no = 1:no_P
     end
     CsumBC(no) = sum(RsumBC{1});
     CsumReversed(no) = sum(RsumBC{2});
-    Rate(:,no) = RsumBC{k};
-    Rate_reversed(:,no) = RsumBC{k};
+    Rate(:,no) = RsumBC{1};
+    Rate_reversed(:,no) = RsumBC{2};
     %----------------------------------------------------------------------
     
+    %% Programming Task 6
+    Rsato(no)  = sato( H, P(no) );
+%--------------------------------------------------------------------------    
 end
 
 
@@ -96,6 +99,13 @@ plot(Ptx,Rate_reversed(3,:), ...
      'k-.','LineWidth',1.5, ...
      'DisplayName',['User 3_R']);
 %--------------------------------------------------------------------------
+
+%% Programming Task 6
+plot(Ptx,Rsato, ...
+     'r-.','LineWidth',1.5, ...
+     'DisplayName',['Rsato']);
+%--------------------------------------------------------------------------
+ 
 hold off;
 xlabel('Ptx in [dB]');
 ylabel('R in [bits/channel use]');
