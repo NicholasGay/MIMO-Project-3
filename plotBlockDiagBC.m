@@ -11,15 +11,19 @@ P = 10.^(Ptx/10);
 no_P = length(P);
 
 % Rate calculations
-
+RsumEqual = zeros(1,no_P);
+RsumBlock = zeros(1,no_P);
 for no = 1:no_P
-  
+  RsumEqual(no) = real(BlockDiagBCEqualPower( H,C,P(no) ));
+  RsumBlock(no) = real(BlockDiagBC( H,C,P(no) ));
 end
 
 figure;
 hold on;
 
-
+plot(Ptx,RsumEqual,'DisplayName','RsumEqual');
+plot(Ptx,RsumBlock ,'DisplayName','RsumBlock');
+     
 hold off;
 xlabel('Ptx in [dB]');
 ylabel('R in [bits/channel use]');
